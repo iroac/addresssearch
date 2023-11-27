@@ -3,17 +3,31 @@
 
 import { GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import {  DataGridPro  } from '@mui/x-data-grid-pro';
+import { useMemo } from 'react';
 
-function DataTable({data}: {data: any}) {
+function DataTable({data, search}: any) {
+    const filteredData = useMemo(() => {
+        if (!search) {
+          return data;
+        }
     
-    const rowData = data.map((muni: any) => {
-        let regiaoImediata = muni['regiao-imediata'];
-        let regiaoIntermediaria = regiaoImediata['regiao-intermediaria'];
-        return { id: muni.id, nome: muni.nome, micro: muni.microrregiao.nome, imediata: regiaoImediata.nome, uf: regiaoIntermediaria.UF.nome , regiao: regiaoIntermediaria.UF.regiao.nome }
-    })
+        return data.filter((muni: any) =>
+          muni.nome.toLowerCase().includes(search.toLowerCase())
+        );
+      }, [data, search]);
+    
+      const rowData = filteredData.map((muni: any) => {
+        return {
+          id: muni.id,
+          nome: muni.nome,
+          micro: muni.microrregiao.nome,
+          imediata: muni['regiao-imediata'].nome,
+          uf: muni['regiao-imediata']['regiao-intermediaria'].UF.nome,
+          regiao: muni['regiao-imediata']['regiao-intermediaria'].UF.regiao.nome,
+        };
+      });
     
     const rows: GridRowsProp = rowData;
-    
       const columns: GridColDef[] = [
         { field: 'nome', headerName: 'Município', width: 250 },
         { field: 'micro', headerName: 'Micro Região', width: 200 },
