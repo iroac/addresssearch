@@ -28,7 +28,7 @@ useEffect(() => {
                onChange={(e) => setSearch(e.target.value)}
           label="Município"
           id="outlined-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
+          sx={{ width: '25ch' }}
           InputProps={{
             startAdornment: <InputAdornment position="end">
                 <SearchIcon />

@@ -1,7 +1,7 @@
 'use client'
 
-import SearchIcon from '@mui/icons-material/Search';
-import { Autocomplete, InputAdornment, TextField } from "@mui/material"
+
+import { Autocomplete, TextField } from "@mui/material"
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { useDebounce } from 'use-debounce';
@@ -57,8 +57,11 @@ useEffect(() => {
     
               <Autocomplete
   disablePortal
-  id="combo-box-demo"
   value={UF}
+  inputValue={UF}
+  onInputChange={(event, newInputValue) => {
+    setUF(newInputValue);
+  }}
   onChange={(event: any, newValue: string | null) => {
     setUF(newValue || '');
   }}

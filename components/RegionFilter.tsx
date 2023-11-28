@@ -1,12 +1,11 @@
 'use client'
 
-import SearchIcon from '@mui/icons-material/Search';
-import { Autocomplete, InputAdornment, TextField } from "@mui/material"
+import { Autocomplete, TextField } from "@mui/material"
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { useDebounce } from 'use-debounce';
 
-const options = [ 'Norte', 'Nordeste', 'Centro-Oeste', 'Suldeste', 'Sul'];
+const options = [ 'Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'];
 
 export default function RegionFilter() {
 const router = useRouter()
@@ -30,8 +29,11 @@ useEffect(() => {
     <div>
               <Autocomplete
   disablePortal
-  id="region-box"
+  inputValue={region}
   value={region}
+  onInputChange={(event, newInputValue) => {
+    setRegion(newInputValue);
+  }}
   onChange={(event: any, newValue: string | null) => {
     setRegion(newValue || '');
   }}

@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
+    background-color: #ededed;
+}
+
+.__className_ba9cb9 {
     background-color: #ededed;
 }
