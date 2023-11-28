@@ -5,8 +5,8 @@ import getData from '../utils/getData'
 import SearchFilter from "@/components/SearchFilter";
 import StateFilter from "@/components/StateFilter";
 import RegionFilter from "@/components/RegionFilter";
-import { Stack, Button } from "@mui/material";
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import { Stack } from "@mui/material";
+import ButtonModal from "@/components/ButtonModal";
 
 
 
@@ -16,7 +16,8 @@ const search = searchParams['search'] ?? ''
 const uf = searchParams['uf'] ?? ''
 const region = searchParams['region'] ?? ''
 
-const data: any = await getData();
+const data: any = null;
+// await getData();
   
 
   return (
@@ -30,7 +31,7 @@ const data: any = await getData();
       </Stack>
 
       <Stack direction='row' justifyContent="flex-end" alignItems="flex-start" sx={{ height: '100%', width: '15%' }} >
-        <Button startIcon={<TravelExploreIcon sx={{ color: 'white' }} />} variant="contained" color="primary" size="small" sx={{ mt: 2, mx: 2, color: 'white' }} > Pesquisar CEP </Button>
+       <ButtonModal />
       </Stack>
    
     </Stack>

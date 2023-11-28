@@ -23,7 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeRegistry options={{ key: 'mui' }}>
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>{children}
+      </body>
       </ThemeRegistry>
     </html>
   )
