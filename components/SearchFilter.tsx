@@ -6,21 +6,24 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { useDebounce } from 'use-debounce';
 
-function SearchFilter() {
+export default function SearchFilter() {
 const router = useRouter()
 const [search, setSearch] = useState('')
 const [query] = useDebounce(search, 1000);
 
 useEffect(() => {
-    if(!query) {
-        router.push('/')
+    const currentQueryParams = new URLSearchParams(window.location.search);
+
+    if (!query) {
+        currentQueryParams.delete('search');
+        router.push(`/?${currentQueryParams.toString()}`);
     } else {
-        router.push(`/?search=${search}`)
+        currentQueryParams.set('search', query);
+        router.push(`/?${currentQueryParams.toString()}`);
     }
-}, [query])
+}, [query]);
 
   return (
-    <div>
                <TextField
                onChange={(e) => setSearch(e.target.value)}
           label="Município"
@@ -32,9 +35,5 @@ useEffect(() => {
             </InputAdornment>,
           }}
         />
-
-    </div>
   )
 }
-
-export default SearchFilter

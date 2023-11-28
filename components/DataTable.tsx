@@ -5,16 +5,22 @@ import { GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import {  DataGridPro  } from '@mui/x-data-grid-pro';
 import { useMemo } from 'react';
 
-function DataTable({data, search}: any) {
+function DataTable({data, search, uf, region}: any) {
     const filteredData = useMemo(() => {
-        if (!search) {
+        if (!search && !uf && !region) {
           return data;
         }
     
-        return data.filter((muni: any) =>
-          muni.nome.toLowerCase().includes(search.toLowerCase())
-        );
-      }, [data, search]);
+
+        return data.filter((muni: any) => {
+            const matchesSearch = !search || muni.nome.toLowerCase().includes(search.toLowerCase());
+            const matchesUF = !uf || muni['regiao-imediata']['regiao-intermediaria'].UF.nome.includes(uf);
+            const matchesRegion = !region || muni['regiao-imediata']['regiao-intermediaria'].UF.regiao.nome.includes(region);
+        
+            return matchesSearch && matchesRegion && matchesUF;
+          });
+        }, [data, search, uf]);
+        
     
       const rowData = filteredData.map((muni: any) => {
         return {
