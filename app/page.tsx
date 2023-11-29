@@ -18,7 +18,8 @@ export default async function Home({
   const microregion = searchParams["microregion"] ?? "";
   const imedrigion = searchParams["imedrigion"] ?? "";
 
-  const data: any = await getData();
+  const data: any = null;
+  // await getData();
 
   return (
     <div className=" h-screen w-screen flex flex-col justify-center items-center bg-slate-100 ">
@@ -29,20 +30,20 @@ export default async function Home({
         sx={{ height: "5%", width: "95%" }}
       >
         <Stack
-          direction="row"
+          direction="column"
           justifyContent="flex-start"
-          alignItems="flex-end"
-          sx={{ height: "100%", width: "70%" }}
+          alignItems="flex-start"
+          sx={{ height: "100%", width: "50%" }}
         >
-          <Typography variant="h6" color="primary">
+          <Typography variant="h5" color="primary">
             Address Search
           </Typography>
         </Stack>
         <Stack
-          direction="row"
-          justifyContent="flex-end"
-          alignItems="flex-start"
-          sx={{ height: "100%", width: "70%" }}
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="flex-end"
+          sx={{ height: "100%", width: "50%" }}
         >
           <ButtonModal />
         </Stack>
@@ -55,9 +56,9 @@ export default async function Home({
         sx={{
           mt: "5px",
           mb: "10px",
-          height: "auto",
-          py: { sm: 15, xs: 5 },
-          px: 5,
+          height: { sm: "30%", xs: "auto" },
+          px: 2,
+          py: 2,
           width: "95%",
           bgcolor: "white",
           borderRadius: 2,
@@ -65,13 +66,11 @@ export default async function Home({
         }}
       >
         <Stack
-          direction="row"
-          spacing={2}
-          useFlexGap
-          flexWrap="wrap"
+          direction={{ xs: "column-reverse", sm: "row" }}
           justifyContent="center"
+          spacing={0.5}
           alignItems="center"
-          sx={{ height: "100%", width: "95%" }}
+          sx={{ height: "100%", width: "100%" }}
         >
           <Filters />
         </Stack>

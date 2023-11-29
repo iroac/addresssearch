@@ -88,33 +88,48 @@ export default function Filters() {
 
   return (
     <>
-      {selectedItems.includes("Município") && (
-        <SearchFilter term="search" label="Município" icon={<SearchIcon />} />
-      )}
-      {selectedItems.includes("Microregião") && (
-        <SearchFilter
-          term="microregion"
-          label="Microregião"
-          icon={<LocationCityIcon />}
-        />
-      )}
+      <Stack
+        direction="row"
+        sx={{ width: "90%" }}
+        useFlexGap
+        flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
+        spacing={2}
+      >
+        {selectedItems.includes("Município") && (
+          <SearchFilter term="search" label="Município" icon={<SearchIcon />} />
+        )}
+        {selectedItems.includes("Microregião") && (
+          <SearchFilter
+            term="microregion"
+            label="Microregião"
+            icon={<LocationCityIcon />}
+          />
+        )}
 
-      {selectedItems.includes("Região imediata") && (
-        <SearchFilter
-          term="imedrigion"
-          label="Região imediata"
-          icon={<LocationSearchingIcon />}
-        />
-      )}
+        {selectedItems.includes("Região imediata") && (
+          <SearchFilter
+            term="imedrigion"
+            label="Região imediata"
+            icon={<LocationSearchingIcon />}
+          />
+        )}
 
-      {selectedItems.includes("Estado - UF") && (
-        <SelectFilter term="uf" label="Estado - UF" options={optionsStates} />
-      )}
-      {selectedItems.includes("Região") && (
-        <SelectFilter term="region" label="Região" options={optionsRegion} />
-      )}
+        {selectedItems.includes("Estado - UF") && (
+          <SelectFilter term="uf" label="Estado - UF" options={optionsStates} />
+        )}
+        {selectedItems.includes("Região") && (
+          <SelectFilter term="region" label="Região" options={optionsRegion} />
+        )}
+      </Stack>
 
-      <Stack direction="column" justifyContent="center" alignItems="center">
+      <Stack
+        direction="column"
+        sx={{ width: "10%" }}
+        justifyContent="center"
+        alignItems="center"
+      >
         <Fab onClick={handleClick} color="primary" size="medium">
           <FilterAltIcon sx={{ color: "white" }} />
         </Fab>

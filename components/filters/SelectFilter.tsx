@@ -32,6 +32,7 @@ export default function SelectFilter({
 
   return (
     <Autocomplete
+      size="small"
       value={select}
       inputValue={select}
       onInputChange={(event, newInputValue) => {
@@ -41,7 +42,7 @@ export default function SelectFilter({
         setSelect(newValue || "");
       }}
       options={options}
-      sx={{ width: 300 }}
+      sx={{ width: 200 }}
       renderInput={(params) => <TextField {...params} label={label} />}
     />
   );

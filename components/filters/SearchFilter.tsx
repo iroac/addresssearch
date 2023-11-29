@@ -34,7 +34,7 @@ export default function SearchFilter({
     <TextField
       onChange={(e) => setSearch(e.target.value)}
       label={label}
-      sx={{ width: "25ch" }}
+      size="small"
       InputProps={{
         startAdornment: <InputAdornment position="end">{icon}</InputAdornment>,
       }}
