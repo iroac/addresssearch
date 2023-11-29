@@ -1,17 +1,12 @@
-import { Stack, Typography } from "@mui/material";
-
-export async function getCEP(cep: any) {
-  const res: any = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-  const data: any = await res.json();
-
-  return data;
-}
+import getCep from "@/utils/getCep";
+import { Chip, Stack, Typography } from "@mui/material";
+import Link from "next/link";
 
 export default async function Page({ params }: { params: { num: string } }) {
-  const data = await getCEP(params.num);
+  const data = await getCep(params.num);
 
   return (
-    <div className="h-screen w-screen flex flex-col justify-start items-center mt-20">
+    <div className="h-screen w-screen flex flex-col justify-start items-center pt-5">
       <Typography variant="h6" color="black">
         INFORMAÇÕES CEP {data.cep}
       </Typography>
@@ -23,24 +18,27 @@ export default async function Page({ params }: { params: { num: string } }) {
         sx={{ width: "90%", height: "80%", bgcolor: "white", p: 6 }}
       >
         <Typography variant="body1" color="initial">
-          Rua: {data.logradouro}
+          Rua: <Chip label={`${data.logradouro}`} />
         </Typography>
         <Typography variant="body1" color="initial">
-          Bairro: {data.bairro}
+          Bairro: <Chip label={`${data.bairro}`} />
         </Typography>
         <Typography variant="body1" color="initial">
-          Cidade: {data.localidade}
+          Cidade: <Chip label={`${data.localidade}`} />
         </Typography>
         <Typography variant="body1" color="initial">
-          UF: {data.uf}
+          UF: <Chip label={`${data.uf}`} />
         </Typography>
         <Typography variant="body1" color="initial">
-          IBGE: {data.ibge}
+          IBGE: <Chip label={`${data.ibge}`} />
         </Typography>
         <Typography variant="body1" color="initial">
-          DDD: {data.ddd}
+          DDD: <Chip label={`${data.ddd}`} />
         </Typography>
       </Stack>
+      <div className=" mt-10 justify-start items-start ">
+        <Link href="/">back home</Link>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import DataTable from "@/components/DataTable";
 import Filters from "@/components/filters/Filters";
 import ButtonModal from "@/components/modal/ButtonModal";
 // MUI
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 export default async function Home({
   searchParams,
@@ -18,19 +18,46 @@ export default async function Home({
   const microregion = searchParams["microregion"] ?? "";
   const imedrigion = searchParams["imedrigion"] ?? "";
 
-  const data: any = null;
-  // await getData();
+  const data: any = await getData();
 
   return (
-    <div className=" h-screen w-screen flex flex-col justify-center items-center ">
+    <div className=" h-screen w-screen flex flex-col justify-center items-center bg-slate-100 ">
       <Stack
         direction="row"
-        justifyContent="flex-start"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ height: "5%", width: "95%" }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="flex-end"
+          sx={{ height: "100%", width: "70%" }}
+        >
+          <Typography variant="h6" color="primary">
+            Address Search
+          </Typography>
+        </Stack>
+        <Stack
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="flex-start"
+          sx={{ height: "100%", width: "70%" }}
+        >
+          <ButtonModal />
+        </Stack>
+      </Stack>
+
+      <Stack
+        direction="row"
+        justifyContent="center"
         alignItems="center"
         sx={{
-          mt: "30px",
+          mt: "5px",
           mb: "10px",
-          height: "30%",
+          height: "auto",
+          py: { sm: 15, xs: 5 },
+          px: 5,
           width: "95%",
           bgcolor: "white",
           borderRadius: 2,
@@ -44,18 +71,9 @@ export default async function Home({
           flexWrap="wrap"
           justifyContent="center"
           alignItems="center"
-          sx={{ height: "100", width: "85%" }}
+          sx={{ height: "100%", width: "95%" }}
         >
           <Filters />
-        </Stack>
-
-        <Stack
-          direction="row"
-          justifyContent="flex-end"
-          alignItems="flex-start"
-          sx={{ height: "100%", width: "15%" }}
-        >
-          <ButtonModal />
         </Stack>
       </Stack>
 
