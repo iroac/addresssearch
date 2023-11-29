@@ -127,19 +127,28 @@ import { GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import { DataGridPro } from "@mui/x-data-grid-pro";
 import { useMemo } from "react";
 
-function DataTable({ data, search, uf, region, microregion, imedrigion }: any) {
+function DataTable({
+  data,
+  municipio,
+  uf,
+  region,
+  microregion,
+  imedrigion,
+}: any) {
+  // Memoized the filter data value and filter the data based if the promps values exist or not.
+  // Add a mockdata either for developer purpose to avoid make request, bacause it's up to 2MB and nextjs not cache over this amount
   const filteredData = useMemo(() => {
     if (!data) {
       return mockdata;
     }
 
-    if (!search && !uf && !region && !microregion && !imedrigion && data) {
+    if (!municipio && !uf && !region && !microregion && !imedrigion && data) {
       return data;
     }
 
     return data.filter((muni: any) => {
-      const matchesSearch =
-        !search || muni.nome.toLowerCase().includes(search.toLowerCase());
+      const matchesmunicipio =
+        !municipio || muni.nome.toLowerCase().includes(municipio.toLowerCase());
       const matchesUF =
         !uf || muni["regiao-imediata"]["regiao-intermediaria"].UF.nome === uf;
       const matchesRegion =
@@ -159,14 +168,14 @@ function DataTable({ data, search, uf, region, microregion, imedrigion }: any) {
           .includes(imedrigion.toLowerCase());
 
       return (
-        matchesSearch &&
+        matchesmunicipio &&
         matchesRegion &&
         matchesUF &&
         matchesMicroRegion &&
         matchesimedrigion
       );
     });
-  }, [data, search, uf, region, microregion, imedrigion]);
+  }, [data, municipio, uf, region, microregion, imedrigion]);
 
   const rowData = filteredData.map((muni: any) => {
     return {

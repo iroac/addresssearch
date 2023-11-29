@@ -18,23 +18,29 @@ export default async function Page({ params }: { params: { num: string } }) {
         sx={{ width: "90%", height: "80%", bgcolor: "white", p: 6 }}
       >
         <Typography variant="body1" color="initial">
-          Rua: <Chip label={`${data.logradouro}`} />
+          Rua:
         </Typography>
+        <Chip label={`${data.logradouro}`} />
         <Typography variant="body1" color="initial">
-          Bairro: <Chip label={`${data.bairro}`} />
+          Bairro:
         </Typography>
+        <Chip label={`${data.bairro}`} />
         <Typography variant="body1" color="initial">
-          Cidade: <Chip label={`${data.localidade}`} />
+          Cidade:
         </Typography>
+        <Chip label={`${data.localidade}`} />
         <Typography variant="body1" color="initial">
-          UF: <Chip label={`${data.uf}`} />
+          UF:
         </Typography>
+        <Chip label={`${data.uf}`} />
         <Typography variant="body1" color="initial">
-          IBGE: <Chip label={`${data.ibge}`} />
+          IBGE:
         </Typography>
+        <Chip label={`${data.ibge}`} />
         <Typography variant="body1" color="initial">
-          DDD: <Chip label={`${data.ddd}`} />
+          DDD:
         </Typography>
+        <Chip label={`${data.ddd}`} />
       </Stack>
       <div className=" mt-10 justify-start items-start ">
         <Link href="/">back home</Link>

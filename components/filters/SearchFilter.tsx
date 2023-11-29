@@ -5,6 +5,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDebounce } from "use-debounce";
 
+// Model for search filter, requires 3 params that is:
+// term = the params string
+// label = the input label
+// icon = the input icon
 export default function SearchFilter({
   term,
   label,

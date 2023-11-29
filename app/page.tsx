@@ -12,7 +12,8 @@ export default async function Home({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const search = searchParams["search"] ?? "";
+  // Define the routes params for the table filters
+  const municipio = searchParams["municipio"] ?? "";
   const uf = searchParams["uf"] ?? "";
   const region = searchParams["region"] ?? "";
   const microregion = searchParams["microregion"] ?? "";
@@ -77,7 +78,7 @@ export default async function Home({
       </Stack>
 
       <DataTable
-        search={search}
+        municipio={municipio}
         uf={uf}
         region={region}
         microregion={microregion}

@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDebounce } from "use-debounce";
 
+// Model for select filter, requires 3 params that is:
+// term = the params string
+// label = the autocomple label
+// options = autocomplete options
 export default function SelectFilter({
   term,
   label,

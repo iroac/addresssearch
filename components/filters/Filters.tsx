@@ -1,4 +1,6 @@
 "use client";
+
+// The options for the SelectFilter
 const optionsStates = [
   "",
   "Acre",
@@ -36,46 +38,42 @@ const optionsRegion = [
   "Sul",
   "",
 ];
-
 import { useState } from "react";
-
+// MUI
 import {
   Checkbox,
   Fab,
-  FormControl,
-  InputLabel,
-  List,
-  ListItem,
   ListItemText,
   Menu,
   MenuItem,
-  Select,
   Stack,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-
 import SearchFilter from "@/components/filters/SearchFilter";
 import SelectFilter from "@/components/filters/SelectFilter";
 
 export default function Filters() {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedItems, setSelectedItems] = useState<String[]>([
     "Município",
     "Microregião",
     "Estado - UF",
   ]);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
+  // Handle the menu close
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  // Set the anchorEl of the fab (menu open)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // Handle the fab item click so add it or remove it depends of its actual states.
   const handleItemClick = (item: any) => () => {
     if (selectedItems.includes(item)) {
       setSelectedItems((prevItems) =>
@@ -98,7 +96,11 @@ export default function Filters() {
         spacing={2}
       >
         {selectedItems.includes("Município") && (
-          <SearchFilter term="search" label="Município" icon={<SearchIcon />} />
+          <SearchFilter
+            term="municipio"
+            label="Município"
+            icon={<SearchIcon />}
+          />
         )}
         {selectedItems.includes("Microregião") && (
           <SearchFilter
