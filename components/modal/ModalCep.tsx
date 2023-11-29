@@ -53,6 +53,14 @@ export default function ModalCep({ handleModal, modal, navigateCep }: any) {
     }
   };
 
+  // Handle the enter press
+  const handleEnterKeyPress = (event: any) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleButtonClick();
+    }
+  };
+
   return (
     <div>
       <Modal open={modal} onClose={handleModal}>
@@ -88,6 +96,7 @@ export default function ModalCep({ handleModal, modal, navigateCep }: any) {
               color="primary"
               placeholder="12345-000"
               value={CEP}
+              onKeyDown={handleEnterKeyPress}
               onChange={(e) => handleSearch(e.target.value)}
             />
 
