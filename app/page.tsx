@@ -1,12 +1,11 @@
-import DataTable from "@/components/DataTable";
+// Utils
 import getData from "../utils/getData";
-import SearchFilter from "@/components/filters/MunicipioFilter";
-import StateFilter from "@/components/filters/StateFilter";
-import RegionFilter from "@/components/filters/RegionFilter";
-import { Stack } from "@mui/material";
+// Components
+import DataTable from "@/components/DataTable";
+import Filters from "@/components/filters/Filters";
 import ButtonModal from "@/components/modal/ButtonModal";
-import MicroRegionFilter from "@/components/filters/MicroRegionFilter";
-import ImedRegionFilter from "@/components/filters/ImedRegionFilter";
+// MUI
+import { Stack } from "@mui/material";
 
 export default async function Home({
   searchParams,
@@ -19,7 +18,8 @@ export default async function Home({
   const microregion = searchParams["microregion"] ?? "";
   const imedrigion = searchParams["imedrigion"] ?? "";
 
-  const data: any = await getData();
+  const data: any = null;
+  // await getData();
 
   return (
     <div className=" h-screen w-screen flex flex-col justify-center items-center ">
@@ -46,11 +46,7 @@ export default async function Home({
           alignItems="center"
           sx={{ height: "100", width: "85%" }}
         >
-          <SearchFilter />
-          <MicroRegionFilter />
-          <ImedRegionFilter />
-          <StateFilter />
-          <RegionFilter />
+          <Filters />
         </Stack>
 
         <Stack
