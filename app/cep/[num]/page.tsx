@@ -3,9 +3,14 @@ import getCep from "@/utils/getCep";
 import { Chip, Stack, Typography } from "@mui/material";
 import ErrorIcon from "@mui/icons-material/Error";
 import ButtonCepError from "@/components/cep/ButtonCepError";
+import CepMap from "@/components/cep/Map";
+import getMap from "@/utils/getMap";
 
 export default async function Page({ params }: { params: { num: string } }) {
   const data = await getCep(params.num);
+  const mapdata = await getMap(data.logradouro);
+  const long = mapdata.features[0].geometry.coordinates[0];
+  const lat = mapdata.features[0].geometry.coordinates[1];
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center bg-gray-100">
@@ -62,7 +67,7 @@ export default async function Page({ params }: { params: { num: string } }) {
           </Stack>
 
           <Stack
-            sx={{ height: "auto%", width: "auto", pt: 8, pb: 10, px: 4 }}
+            sx={{ height: "auto%", width: "auto", pt: 8, pb: 6, px: 4 }}
             justifyContent="center"
             alignItems="center"
             spacing={2}
@@ -176,8 +181,10 @@ export default async function Page({ params }: { params: { num: string } }) {
             </Stack>
           </Stack>
 
+          <CepMap latitude={lat} longitude={long} />
+
           <Stack
-            sx={{ height: "10%", width: "100%", pl: 2, pt: 2 }}
+            sx={{ height: "10%", width: "100%", pl: 2, pt: 10, pb: 5 }}
             direction="row"
             justifyContent="flex-start"
             alignItems="flex-start"

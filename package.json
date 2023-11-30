@@ -14,10 +14,12 @@
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "@mui/x-data-grid-pro": "^6.18.2",
-    "@types/leaflet": "^1.9.8",
+    "@types/react-leaflet": "^3.0.0",
+    "mapbox-gl": "^3.0.0",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-map-gl": "^7.1.6",
     "use-debounce": "^10.0.0"
   },
   "devDependencies": {
