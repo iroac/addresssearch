@@ -70,12 +70,16 @@ export default function ModalCep({ handleModal, modal, navigateCep }: any) {
             justifyContent="flex-start"
             alignItems="flex-start"
             sx={{
-              width: "10%",
+              width: "5%",
               height: "100%",
             }}
           >
             <IconButton sx={{ p: 0 }} onClick={handleModal}>
-              <CloseIcon color="primary" fontSize="small" />
+              <CloseIcon
+                color="primary"
+                sx={{ height: 40, width: 40 }}
+                fontSize="medium"
+              />
             </IconButton>
           </Stack>
 
@@ -108,6 +112,7 @@ export default function ModalCep({ handleModal, modal, navigateCep }: any) {
               <ArrowCircleRightIcon
                 color={`${errorInput ? "error" : "primary"}`}
                 fontSize="large"
+                sx={{ height: 40, width: 40 }}
               />
             </IconButton>
           </Stack>

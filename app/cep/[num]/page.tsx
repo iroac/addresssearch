@@ -184,7 +184,7 @@ export default async function Page({ params }: { params: { num: string } }) {
           <CepMap latitude={lat} longitude={long} />
 
           <Stack
-            sx={{ height: "10%", width: "100%", pl: 2, pt: 10, pb: 5 }}
+            sx={{ height: "10%", width: "100%", pl: 2, pt: 5, pb: 4 }}
             direction="row"
             justifyContent="flex-start"
             alignItems="flex-start"

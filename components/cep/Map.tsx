@@ -1,5 +1,7 @@
 "use client";
-import Map from "react-map-gl";
+import Map, { Marker } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import PlaceIcon from "@mui/icons-material/Place";
 
 export default function CepMap({
   latitude,
@@ -10,6 +12,7 @@ export default function CepMap({
 }) {
   return (
     <Map
+      mapLib={import("mapbox-gl")}
       initialViewState={{
         longitude: longitude,
         latitude: latitude,
@@ -18,6 +21,10 @@ export default function CepMap({
       mapStyle="mapbox://styles/mapbox/streets-v11"
       style={{ width: "90%", height: 700 }}
       mapboxAccessToken="pk.eyJ1Ijoicm9hY3UiLCJhIjoiY2xhcmMzMXpyMThkYjN2bnZoZDhoNTlyeiJ9.TQJEyuVsnPmqtgzeuKCKWw"
-    ></Map>
+    >
+      <Marker longitude={longitude} latitude={latitude} anchor="bottom">
+        <PlaceIcon color="primary" sx={{ height: 90, width: 90 }} />
+      </Marker>
+    </Map>
   );
 }

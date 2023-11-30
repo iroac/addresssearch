@@ -19,8 +19,7 @@ export default async function Home({
   const microregion = searchParams["microregion"] ?? "";
   const imedrigion = searchParams["imedrigion"] ?? "";
 
-  const data: any = null;
-  // await getData();
+  const data: any = await getData();
 
   return (
     <div className=" h-screen w-screen flex flex-col justify-center items-center bg-slate-100 ">
@@ -36,7 +35,7 @@ export default async function Home({
           alignItems="flex-start"
           sx={{ height: "100%", width: "50%" }}
         >
-          <Typography variant="h5" color="primary">
+          <Typography variant="h4" color="primary">
             Address Search
           </Typography>
         </Stack>

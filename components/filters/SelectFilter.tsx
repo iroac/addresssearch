@@ -36,7 +36,7 @@ export default function SelectFilter({
 
   return (
     <Autocomplete
-      size="small"
+      size="medium"
       value={select}
       inputValue={select}
       onInputChange={(event, newInputValue) => {

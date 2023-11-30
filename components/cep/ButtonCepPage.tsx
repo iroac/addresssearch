@@ -10,7 +10,13 @@ export default function ButtonCepPage() {
     <>
       <Button
         variant="contained"
-        sx={{ color: "white", m: 0 }}
+        sx={{
+          color: "white",
+          m: 0,
+          height: "40px",
+          fontSize: "20px",
+          width: "auto",
+        }}
         startIcon={<KeyboardBackspaceIcon />}
         onClick={() => {
           router.push(`/`);

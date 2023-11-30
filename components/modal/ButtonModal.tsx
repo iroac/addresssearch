@@ -37,7 +37,7 @@ export default function ButtonModal() {
         variant="contained"
         color="primary"
         size="small"
-        sx={{ color: "white" }}
+        sx={{ color: "white", height: "40px", fontSize: "20px", width: "auto" }}
       >
         Pesquisar CEP
       </Button>
